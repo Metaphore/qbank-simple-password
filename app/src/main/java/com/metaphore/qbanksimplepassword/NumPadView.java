@@ -28,6 +28,7 @@ public class NumPadView extends FrameLayout implements View.OnClickListener {
         LayoutInflater.from(context).inflate(R.layout.num_pad_view, this, true);
 
         btnDel = findViewById(R.id.btn_spass_delete);
+        btnDel.setVisibility(INVISIBLE);
         btnDel.setOnClickListener(this);
         findViewById(R.id.btn_spass_num0).setOnClickListener(this);
         findViewById(R.id.btn_spass_num1).setOnClickListener(this);

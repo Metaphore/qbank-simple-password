@@ -87,9 +87,8 @@
             <Button
                     android:id="@+id/btn_spass_delete"
                     style="@style/SPassRoundButton"
-                    android:text="X"
-                    android:tag="del"
-                    android:visibility="invisible"/>
+                    android:text="×"
+                    android:tag="del"/>
 
         </TableRow>
 
