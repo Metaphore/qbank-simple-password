@@ -1,12 +1,19 @@
 package com.metaphore.qbanksimplepassword;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import java.util.Calendar;
+
 public class NumPadView extends FrameLayout implements View.OnClickListener {
+    private static final String KEY_INSTANCE_STATE = "key_instance_state";
+    private static final String KEY_DEL_VISIBLE = "key_del_visible";
+
     private Listener listener;
     private View btnDel;
 
@@ -78,6 +85,26 @@ public class NumPadView extends FrameLayout implements View.OnClickListener {
         if (listener != null) {
             listener.onDelete();
         }
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(KEY_INSTANCE_STATE, super.onSaveInstanceState());
+        bundle.putBoolean(KEY_DEL_VISIBLE, btnDel.getVisibility() == VISIBLE);
+        return bundle;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+            boolean delVisible = bundle.getBoolean(KEY_DEL_VISIBLE);
+            state = bundle.getParcelable(KEY_INSTANCE_STATE);
+
+            btnDel.setVisibility(delVisible ? VISIBLE : INVISIBLE);
+        }
+        super.onRestoreInstanceState(state);
     }
 
     public interface Listener {

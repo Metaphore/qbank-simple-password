@@ -2,6 +2,8 @@ package com.metaphore.qbanksimplepassword;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,9 @@ import java.util.ArrayList;
 
 public class InputTokensView extends FrameLayout {
     private static final String LOG_TAG = InputTokensView.class.getSimpleName();
+    private static final String KEY_INSTANCE_STATE = "key_instance_state";
+    private static final String KEY_FOCUSED = "key_focused";
+    private static final String KEY_INPUT_VALUES = "key_input_values";
     private static final int TOKEN_AMOUNT = 4;
 
     private final ArrayList<Token> tokens;
@@ -22,6 +27,7 @@ public class InputTokensView extends FrameLayout {
 
     private int focused = 0;
 
+    @SuppressWarnings("UnusedDeclaration")
     public InputTokensView(Context context) {
         this(context, null);
     }
@@ -92,6 +98,37 @@ public class InputTokensView extends FrameLayout {
             Token token = tokens.get(i);
             token.setState(i < focused ? TokenState.FILLED : i > focused ? TokenState.EMPTY : TokenState.FOCUSED);
         }
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        ArrayList<String> inputValues = new ArrayList<>();
+        for (Token token : tokens) {
+            inputValues.add(token.content);
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(KEY_INSTANCE_STATE, super.onSaveInstanceState());
+        bundle.putInt(KEY_FOCUSED, focused);
+        bundle.putStringArrayList(KEY_INPUT_VALUES, inputValues);
+        return bundle;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) {
+            Bundle bundle = (Bundle) state;
+            int focused = bundle.getInt(KEY_FOCUSED);
+            ArrayList<String> inputValues = bundle.getStringArrayList(KEY_INPUT_VALUES);
+            state = bundle.getParcelable(KEY_INSTANCE_STATE);
+
+            this.focused = focused;
+            for (int i = 0; i < tokens.size(); i++) {
+                tokens.get(i).content = inputValues.get(i);
+            }
+            updateTokens();
+        }
+        super.onRestoreInstanceState(state);
     }
 
     private enum TokenState { EMPTY, FOCUSED, FILLED }
