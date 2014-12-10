@@ -2,5 +2,5 @@
 <resources>]
     <color name="spass_dgray">#888</color>
     <color name="spass_lgray">#ccc</color>
-    <color name="spass_rb_bg_solid">#fff</color>
+    <color name="spass_rb_bg_solid">#0000</color>
 </resources>
