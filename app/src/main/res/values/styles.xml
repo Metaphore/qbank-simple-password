@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+
+    <style name="SPassRoundButton">
+        <item name="android:layout_width">@dimen/spass_rb_size</item>
+        <item name="android:layout_height">@dimen/spass_rb_size</item>
+        <item name="android:background">@drawable/spass_rb_bg</item>
+        <item name="android:textSize">@dimen/spass_rb_text_size</item>
+        <item name="android:textColor">@color/spass_lgray</item>
+        <item name="android:layout_marginLeft">@dimen/spass_rb_spacing_h</item>
+        <item name="android:layout_marginRight">@dimen/spass_rb_spacing_h</item>
+    </style>
+
+    <style name="SPassButtonRow">
+        <item name="android:layout_margin">@dimen/spass_rb_spacing_v</item>
+    </style>
+
+    <style name="SPassToken">
+        <item name="android:layout_width">@dimen/spass_token_size</item>
+        <item name="android:layout_height">@dimen/spass_token_size</item>
+        <item name="android:layout_marginLeft">@dimen/spass_token_spacing</item>
+        <item name="android:layout_marginRight">@dimen/spass_token_spacing</item>
+        <item name="android:src">@drawable/spass_token_empty</item>
+        <item name="android:scaleType">center</item>
+    </style>
+</resources>

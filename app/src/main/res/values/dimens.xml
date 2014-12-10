@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spass_rb_border_width">1dp</dimen>
+    <dimen name="spass_rb_size">72dp</dimen>
+    <dimen name="spass_rb_text_size">48dp</dimen>
+    <dimen name="spass_rb_spacing_h">12dp</dimen>
+    <dimen name="spass_rb_spacing_v">9dp</dimen>
+
+    <dimen name="spass_token_border_width">1dp</dimen>
+    <dimen name="spass_token_size">32dp</dimen>
+    <dimen name="spass_token_filled_size">22dp</dimen>
+    <dimen name="spass_token_roundness">5dp</dimen>
+    <dimen name="spass_token_spacing">5dp</dimen>
+</resources>

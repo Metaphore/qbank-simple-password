@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Simple Password</string>
+
+    <string name="reg_simple_pass_cannot_contain_repeating_digits">Пароль не может содержать более двух одинаковых цифр подряд (3334, 4888)</string>
+    <string name="reg_simple_pass_cannot_contain_sequental_digits_123">Пароль не может состоять из последовательных цифр (1234, 9876)</string>
+    <string name="reg_simple_pass_cannot_contain_sequental_digits_147">Пароль не может содержать более двух последовательных цифр клавиатуры (147, 741)</string>
+
+</resources>
