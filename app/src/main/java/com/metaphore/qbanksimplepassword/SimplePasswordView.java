@@ -61,6 +61,7 @@ public class SimplePasswordView extends FrameLayout implements NumPadView.Listen
 
         if (!analyzer.analyze(input) && listener != null) {
             listener.onInputError(analyzer.getErrorMessage());
+            return;
         }
 
         if (listener != null) {
