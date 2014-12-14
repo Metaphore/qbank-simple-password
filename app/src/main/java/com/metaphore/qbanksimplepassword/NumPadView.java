@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NumPadView extends FrameLayout implements View.OnClickListener {
     private static final String KEY_INSTANCE_STATE = "key_instance_state";
@@ -57,22 +59,10 @@ public class NumPadView extends FrameLayout implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         String tag = v.getTag().toString();
-        switch (tag) {
-            case "0":
-            case "1":
-            case "2":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-            case "7":
-            case "8":
-            case "9":
-                numPressed(tag);
-                break;
-            case "del":
-                delPressed();
-                break;
+        if (tag.matches("[0-9]")) {
+            numPressed(tag);
+        } else if (tag.equals("del")) {
+            delPressed();
         }
     }
 
