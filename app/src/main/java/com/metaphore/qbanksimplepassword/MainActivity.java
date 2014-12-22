@@ -29,6 +29,7 @@ public class MainActivity extends Activity implements SimplePasswordView.Listene
         String input = spassView.getInput();
         Toast.makeText(this, "Input: " + input, Toast.LENGTH_SHORT).show();
 
+        spassView.clearInput();
     }
 
     @Override

@@ -51,6 +51,10 @@ public class InputTokensView extends FrameLayout {
         updateTokens();
     }
 
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
+
     public void handleInput(String input) {
         if (focused == TOKEN_AMOUNT) {
             Log.d(LOG_TAG, "Input skipped. All tokens are full");
@@ -64,10 +68,6 @@ public class InputTokensView extends FrameLayout {
         if (focused == TOKEN_AMOUNT && listener != null) {
             listener.onInputComplete();
         }
-    }
-
-    public void setListener(Listener listener) {
-        this.listener = listener;
     }
 
     public void delete() {
@@ -91,6 +91,11 @@ public class InputTokensView extends FrameLayout {
             sb.append(tokens.get(i).content);
         }
         return sb.toString();
+    }
+
+    public void clearInput() {
+        focused = 0;
+        updateTokens();
     }
 
     private void updateTokens() {
