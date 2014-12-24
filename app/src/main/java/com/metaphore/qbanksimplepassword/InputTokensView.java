@@ -96,6 +96,10 @@ public class InputTokensView extends FrameLayout {
     public void clearInput() {
         focused = 0;
         updateTokens();
+
+        if (listener != null) {
+            listener.onInputEmpty();
+        }
     }
 
     private void updateTokens() {
