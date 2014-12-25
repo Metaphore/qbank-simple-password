@@ -47,8 +47,8 @@ public class SimplePasswordView extends FrameLayout implements NumPadView.Listen
     @Override
     public void onNumInput(String num) {
         Log.d("", num);
-        inputTokens.handleInput(num);
         numPad.showDelButton();
+        inputTokens.handleInput(num);
     }
 
     @Override
